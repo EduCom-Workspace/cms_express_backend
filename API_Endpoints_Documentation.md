@@ -4,7 +4,7 @@
 ## User Authentication Routes
 
 ### 1. Sign Up (User)
-- **Endpoint:** <span style="background-color:blue; padding:3px; border-radius:5px">POST</span> `/api/auth/signup`
+- **Endpoint:** `POST` `/api/auth/signup`
 - **Body:**
    ```json
    {
@@ -21,7 +21,7 @@
 - **Response:** User details and token upon successful sign-up.
 
 ### 2. Log In (User)
-- **Endpoint:** <span style="background-color:blue; padding:3px; border-radius:5px">POST</span> `/api/auth/login`
+- **Endpoint:** `POST` `/api/auth/login`
 - **Body:**
  ```json
   {
@@ -32,7 +32,7 @@
 - **Response:** User details and token upon successful login.
 
 ### 3. Sign Up (Admin)
-- **Endpoint:** <span style="background-color:blue; padding:3px; border-radius:5px">POST</span> `/api/auth/admin/signup`
+- **Endpoint:** `POST` `/api/auth/admin/signup`
 - **Body:**
  ```json
   {
@@ -44,7 +44,7 @@
 - **Response:** Admin details and token upon successful sign-up.
 
 ### 4. Log In (Admin)
-- **Endpoint:** <span style="background-color:blue; padding:3px; border-radius:5px">POST</span> `/api/auth/admin/login`
+- **Endpoint:** `POST` `/api/auth/admin/login`
 - **Body:**
  ```json
   {
@@ -59,7 +59,7 @@
 ## Course Routes
 
 ### 1. Get All Courses
-- **Endpoint:** <span style="background-color:green; padding:3px; border-radius:5px">GET</span> `/api/courses/all-courses`
+- **Endpoint:** `GET` `/api/courses/all-courses`
 - **Response:** List of all courses, with each course containing:
  ```json
   {
@@ -70,13 +70,13 @@
   }
   ```
 ### 2. Upload New Lesson
-- **Endpoint:** <span style="background-color:blue; padding:3px; border-radius:5px">POST</span> `/api/courses/upload-new-lesson`
+- **Endpoint:** `POST` `/api/courses/upload-new-lesson`
 - **Headers:** Content-Type: multipart/form-data
 - **Body:** Form-data fields:
-  - image1 (File) - The first image file for the lesson
-  - image2 (File) - The second image file for the lesson
-  - video (File) - The video file for the lesson
-  - data (JSON) - Other lesson details:
+  - `image1` (File) - The first image file for the lesson
+  - `image2` (File) - The second image file for the lesson
+  - `video` (File) - The video file for the lesson
+  - `data` (JSON) - Other lesson details:
    ```json
     {
       "token": "string",
@@ -91,7 +91,7 @@
 - **Response:** Lesson details with upload confirmation.
 
 ### 3. Create New Course
-- **Endpoint:** <span style="background-color:blue; padding:3px; border-radius:5px">POST</span> `/api/courses/new-course`
+- **Endpoint:** `POST` `/api/courses/new-course`
 - **Body:**
  ```json
   {
@@ -105,7 +105,7 @@
 - **Response:** Course details and confirmation of creation.
 
 ### 4. Buy New Course
-- **Endpoint:** <span style="background-color:blue; padding:3px; border-radius:5px">POST</span> `/api/courses/buy-new-course`
+- **Endpoint:** `POST` `/api/courses/buy-new-course`
 - **Body:**
  ```json
   {
@@ -118,7 +118,7 @@
 - **Response:** Purchase confirmation and access details.
 
 ### 5. Mark Lesson as Complete
-- **Endpoint:** <span style="background-color:blue; padding:3px; border-radius:5px">POST</span> `/api/courses/mark-complete-lesson`
+- **Endpoint:** `POST` `/api/courses/mark-complete-lesson`
 - **Body:**
  ```json
   {
@@ -132,7 +132,7 @@
 - **Response:** Lesson completion confirmation and progress update.
 
 ### 6. Get Course Lessons
-- **Endpoint:** <span style="background-color:blue; padding:3px; border-radius:5px">POST</span> `/api/courses/get-course-lessons`
+- **Endpoint:** `POST` `/api/courses/get-course-lessons`
 - **Body:**
  ```json
   {
