@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  admin_id String @id @default(uuid()) @map("admin_id") // PRIMARY KEY
+  name     String @map("name") // NOT NULL
+  email    String @map("email") // NOT NULL
+  password String @map("password") // NOT NULL
+}
+
+model Registration {
+  user_id           String @id @default(uuid()) // PRIMARY KEY
+  username          String
+  email             String @unique
+  password          String
+  user_type         String
+
+  // Relationships
+  students Student[] @relation("StudentRegistration")
+  teachers Teacher[] @relation("TeacherRegistration")
+
+  @@map("registrations")
+}
+
+model Student {
+  student_id   String @id @default(uuid()) // PRIMARY KEY
+  user_id      String @unique // Ensure user_id is unique
+  first_name   String
+  last_name    String
+  phone_number String
+  email        String @unique
+
+  // Relationships
+  registration Registration @relation("StudentRegistration", fields: [user_id], references: [user_id])
+}
+
+model Teacher {
+  teacher_id   String @id @default(uuid()) // PRIMARY KEY
+  user_id      String @unique // Ensure user_id is unique
+  first_name   String
+  last_name    String
+  phone_number Int
+  email        String @unique
+
+  // Relationships
+  registration Registration @relation("TeacherRegistration", fields: [user_id], references: [user_id])
+}
+
+model Login {
+  login_id  String @id @default(uuid()) // PRIMARY KEY
+  user_id   String @unique // Ensure user_id is unique
+  user_name String @unique
+  password  String
+  user_type String
+}
+
+model Course {
+  course_id   String @id @default(uuid()) // PRIMARY KEY
+  course_name String
+}
+
+model Enrollment {
+  enroll_id   String @id @default(uuid()) // PRIMARY KEY
+  enroll_date String
+  student_id  String
+  course_id   String // Foreign key for Course
+}
+
+model Lesson {
+  lesson_id      String   @id @default(uuid()) // PRIMARY KEY
+  lesson_name    String
+  lesson_num     String
+  lesson_details String
+  image1         String
+  image2         String
+  video_url      String
+  post_date      DateTime
+  course_id      String
+}
+ 
+model StudentLesson {
+  id            Int      @id @default(autoincrement())
+  student_id    String
+  course_id     String
+  lesson_id     String
+  complete_date DateTime
+}
+
+model Content {
+  content_id   String @id @default(uuid()) // PRIMARY KEY
+  content_type String
+}
